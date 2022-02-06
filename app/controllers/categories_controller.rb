@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @products = @category.products.all
+    @products = @category.products.order('created_at DESC').page params[:page]
   end
 
   private
