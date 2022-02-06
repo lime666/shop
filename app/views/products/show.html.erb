@@ -1,0 +1,17 @@
+<p>
+  <div class="text-center">
+    <h3><%= @product.title %></h3>
+  </div>
+</p>
+
+<p>
+  <div class="text-center">
+    <p><%= @product.description %></p>
+  </div>
+</p>
+
+<p>
+  <div class="text-center">
+    <p>Price: <%= number_to_currency(product.price, unit: "UAH", separator: ",", delimiter: " ", format: "%n %u") %></p>
+  </div>
+</p>
