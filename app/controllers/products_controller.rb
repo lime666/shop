@@ -1,12 +1,12 @@
 class ProductsController < ApplicationController
-  before_action :set_category
+  before_action :set_category, only: :index
 
   def index
-  	@products = @category.products
+  	@products = Products.all
   end
 
   def show
-  	@product = @category.products.find(params[:id])
+  	@product = Product.find(params[:id])
   end
 
   def search
