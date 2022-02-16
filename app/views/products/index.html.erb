@@ -1,10 +1,7 @@
 <div class="row">
-</div>
-
-<div class="row">
+  <%= render 'products/order_products' %>
   <%= link_to_previous_page @products, 'Previous Page' %>
   <%= link_to_next_page @products, 'Next Page' %>
-  <%= render 'products/order_products' %>
   <%= render @products %>
-  <%= paginate @products, outer_window: 2 %>
+  <%= paginate @products, outer_window: 3 %>
 </div>

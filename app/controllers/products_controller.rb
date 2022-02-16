@@ -1,8 +1,19 @@
 class ProductsController < ApplicationController
-  before_action :set_category, only: :index
-
+  #before_action :set_category, only: :index
+  
   def index
-  	@products = Products.all
+  	@products = Product.all.page params[:page]
+    @categories = Category.all
+    @sort_by = params[:sort_by]
+    if @sort_by == 'Sort A-Z'
+      @products = @products.sort_by_title_asc
+    elsif @sort_by == 'Sort Z-A'
+      @products = @products.sort_by_title_desc
+    elsif @sort_by =='Price Low to High'
+      @products = @products.sort_by_price_asc
+    elsif @sort_by =='Price High to Low'
+      @products = @products.sort_by_price_desc
+    end
   end
 
   def show

@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  resources :categories, only: [:index, :show] do
-    resources :products, only: [:index, :show, :search] do
+  resources :categories, only: [:index, :show]
+  resources :products, only: [:index, :show, :search] do
       get 'search', to: 'products#search'
 
-    end
-      
+    
   end
 
   resources :pages, only: [:home, :contacts, :all_products]
