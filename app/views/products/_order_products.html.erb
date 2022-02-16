@@ -1,6 +1,11 @@
 <%= form_with url: products_path(@product), method: :get do |form| %>
   <div class='form-group'>
     <%= form.select :sort_by, ['Sort A-Z', 'Sort Z-A', 'Price Low to High', 'Price High to Low'], { selected: params[:sort_by] || 'Sort A-Z' }, { onchange: 'this.form.submit();' } %>
+    <hr>
+    <%= form.number_field :price_from, placeholder: 'Price from:' %>
+    <%= form.number_field :price_to, placeholder: 'Price to:' %>
+    <%= form.submit 'Show' %>
+    <hr>
 
   </div>
 <% end %>

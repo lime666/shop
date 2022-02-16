@@ -14,6 +14,12 @@ class ProductsController < ApplicationController
     elsif @sort_by =='Price High to Low'
       @products = @products.sort_by_price_desc
     end
+
+    if params[:price_from] || params[:price_to]
+      @price_from = params[:price_from]
+      @price_to = params[:price_to]
+      @products = @products.price_range(params[:price_from], params[:price_to])
+    end
   end
 
   def show
