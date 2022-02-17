@@ -73,3 +73,6 @@ gem 'faker'
 gem 'kaminari'
 # user auth
 gem 'devise'
+# admin panel
+gem 'rails_admin'
+gem "sassc-rails"
