@@ -20,15 +20,22 @@ class ProductsController < ApplicationController
       @price_to = params[:price_to]
       @products = @products.price_range(params[:price_from], params[:price_to])
     end
+
+    if params[:search]
+      @search = params[:search]
+      @products = @products.search_by(@search)
+=begin
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.update("search", @products.count)
+      end
+    end
+=end
+    end
   end
 
   def show
   	@product = Product.find(params[:id])
-  end
-
-  def search
-    @products = Product.where('title ILIKE ? or description ILIKE ?', "%#{params[:q]}%", "%#{params[:q]}%")
-    render 'index'
   end
 
 

@@ -67,5 +67,9 @@ group :development do
   # gem "spring"
 end
 
+# for seeds.rb
 gem 'faker'
+# for pagination
 gem 'kaminari'
+# user auth
+gem 'devise'
