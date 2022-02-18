@@ -1,5 +1,6 @@
 <nav class="nav flex-column">
-  <% Category.all.each do |category|%>
+  <% Category.where(parent_id: nil).each do |category|%>
     <%= link_to category.title, category_path(category), class: 'nav-link active' %>
+    <%= render 'categories/subcategories', subcategories: category.subcategories %>
   <% end %>
 </nav>

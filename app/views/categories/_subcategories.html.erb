@@ -1,0 +1,5 @@
+<% subcategories.each do |subcategory| %>
+  <div style="padding-left: 10px;">
+    <%= link_to subcategory.title, category_path(subcategory), class: 'nav-link active' %>
+  </div>
+<% end %>
