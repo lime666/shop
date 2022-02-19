@@ -2,28 +2,19 @@ class ProductsController < ApplicationController
   #before_action :set_category, only: :index
   
   def index
-  	@products = Product.all.page params[:page]
+  	@products = Product.all
     @categories = Category.all
     @sort_by = params[:sort_by]
-    if @sort_by == 'Sort A-Z'
-      @products = @products.sort_by_title_asc
-    elsif @sort_by == 'Sort Z-A'
-      @products = @products.sort_by_title_desc
-    elsif @sort_by =='Price Low to High'
-      @products = @products.sort_by_price_asc
-    elsif @sort_by =='Price High to Low'
-      @products = @products.sort_by_price_desc
-    end
+   
+    @products = Product.order_by_type(@sort_by)
 
-    if params[:price_from] || params[:price_to]
-      @price_from = params[:price_from]
-      @price_to = params[:price_to]
-      @products = @products.price_range(params[:price_from], params[:price_to])
+    if params[:price_from].present? && params[:price_to].present?
+      @products = Product.price_range(params[:price_from], params[:price_to])
     end
 
     if params[:search]
       @search = params[:search]
-      @products = @products.search_by(@search)
+      @products = Product.search_by(@search)
 =begin
     respond_to do |format|
       format.turbo_stream do
@@ -32,6 +23,7 @@ class ProductsController < ApplicationController
     end
 =end
     end
+    @products = @products.page params[:page]
   end
 
   def show

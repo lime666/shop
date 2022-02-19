@@ -9,6 +9,7 @@
     "esbuild": "^0.14.18",
     "esbuild-rails": "^1.0.3",
     "jquery": "^3.6.0",
+    "jquery-ujs": "^1.2.3",
     "sass": "^1.49.7"
   },
   "scripts": {
