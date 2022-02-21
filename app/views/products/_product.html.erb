@@ -4,7 +4,9 @@
     <div class="card-body">
       <h5 class="card-title"><%= product.title %></h5>
       <p class="card-text text-trunkate"><%= product.description %></p>
-      <p class="badge bg-success"><%= number_to_currency(product.price, unit: "UAH", separator: ",", delimiter: " ", format: "%n %u") %></p>
+      <p class="badge bg-success"><%= number_to_currency(product.price, unit: "UAH", separator: ",", delimiter: " ", format: "%n %u") %>
+
+      </p>
       <%= link_to 'Show', product_path(product) %>
       
     </div>

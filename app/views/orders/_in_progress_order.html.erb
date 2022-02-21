@@ -1,0 +1,11 @@
+<% @items.each do |item| %>
+  <p>Item: <%= item.product.title %></p>
+  <p>Price: <%= item.product.price %></p>
+    <%= link_to 'Delete product', product_order_item_path(item.product, item), method: :delete, remote: true %>
+  <p>Subtotal: <%#= item.total_price %>
+  <p>Quantity: <%= item.quantity %></p>
+  <p><%= link_to 'Add another', product_order_item_path(item.product, item), method: :patch, class: 'btn btn-outline-success' %></p>
+  <p></p>
+  <hr>
+<% end %>
+<p>Total price: <%#= current_order.total %></p>

@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   	@products = Product.all
     @categories = Category.all
     @sort_by = params[:sort_by]
+    @order_item = current_order.order_items.new
    
     @products = Product.order_by_type(@sort_by)
 

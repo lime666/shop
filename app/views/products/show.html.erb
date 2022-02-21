@@ -14,4 +14,8 @@
   <div class="text-center">
     <p>Price: <%= number_to_currency(@product.price, unit: "UAH", separator: ",", delimiter: " ", format: "%n %u") %></p>
   </div>
+
+  <% if current_user %>
+    <%= link_to 'Add to cart', product_order_items_path(@product), method: :post, class: 'btn btn-success' %>
+  <% end %>
 </p>

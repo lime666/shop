@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
+  get 'orders/show'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
  
   
   resources :categories, only: [:index, :show]
   resources :products, only: [:index, :show]
+  
+  resources :products do
+    resources :order_items, only: [:create, :update, :destroy]
+  end
+
+  resources :orders, only: :show
 
   resources :pages, only: [:home, :contacts, :all_products]
   get 'contacts', to: 'pages#contacts'
