@@ -1,3 +1,4 @@
 <h3>Products in cart:</h3>
-<%= render 'in_progress_order' %>
+<%= render partial: 'order_item', collection: @order_items %>
+<p>Total price: <%#= current_order.total %></p>
 <%= link_to " Continue Shopping", root_path, class: 'btn btn-outline-success' %>
