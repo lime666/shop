@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :order_items, only: [:create, :update, :destroy]
   end
 
-  resources :orders, only: :show
+  resources :orders, only: [:show, :update]
 
   resources :pages, only: [:home, :contacts, :all_products]
   get 'contacts', to: 'pages#contacts'

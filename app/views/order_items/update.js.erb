@@ -1,1 +1,1 @@
-$('.quantity-item-<%= @order_item.id %>').html("<%= @order_item.quantity %>")
+$('#order-item-<%= @order_item.id %>').html("<%= j render 'orders/order_item', order_item: @order_item %>")

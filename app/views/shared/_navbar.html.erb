@@ -46,9 +46,11 @@
             <%= submit_tag "Search", class: "btn btn-outline-success" %>
           <% end %>
         </div>
-        <li class="nav-item">
-          <%= link_to 'Cart', order_path(current_order), class: 'nav-link' %>
-        </li>
+        <% if current_user %>
+          <li class="nav-item">
+            <%= link_to 'Cart', order_path(current_order), class: 'nav-link' %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>

@@ -1,4 +1,6 @@
 <h3>Products in cart:</h3>
 <%= render partial: 'order_item', collection: @order_items %>
-<p>Total price: <%#= current_order.total %></p>
-<%= link_to " Continue Shopping", root_path, class: 'btn btn-outline-success' %>
+<p><div id="total-<%= current_order.id %>">Total price: <%= current_order.total %></div></p>
+<%= link_to "Order", order_path, method: :patch, class: 'btn btn-outline-success' %>
+<hr>
+<%= link_to "Continue Shopping", root_path, class: 'btn btn-outline-success' %>

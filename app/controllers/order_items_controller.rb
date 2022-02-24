@@ -16,7 +16,7 @@ class OrderItemsController < ApplicationController
   def update
    	@order_item.update(quantity: params[:quantity])
    	@order_items = current_order.order_items
-   	redirect_to order_path(current_order)
+   	#redirect_to order_path(current_order)
   end
 
   def destroy
@@ -24,9 +24,6 @@ class OrderItemsController < ApplicationController
   end
 
   private
-  def order_params
-  	#params.require(:order_item).permit(:product_id, :quantity)
-  end
 
   def set_order
   	@order_item = OrderItem.find_by(product_id: params[:product_id])

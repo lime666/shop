@@ -2,11 +2,11 @@
   <p>Item: <%= order_item.product.title %></p>
   <p>Price: <%= order_item.product.price %></p>
     <%= link_to 'Delete product', product_order_item_path(order_item.product, order_item), method: :delete, remote: true %>
-  <p>Subtotal: <%#= item.total_price %></p>
-  <p>Quantity: <div class="quantity-item-<%= order_item.id %>"><%= order_item.quantity %></div></p>
-  <p><%= link_to 'Add item', product_order_item_path(product_id: order_item.product, id: order_item, quantity: order_item.quantity + 1 ), method: :patch, class: 'btn btn-outline-success' %></p>
+  <p>Quantity: <%= order_item.quantity %></p>
+  <p>Subtotal: <%= order_item.product.price * order_item.quantity %></p>
+  <p><%= link_to 'Add item', product_order_item_path(product_id: order_item.product, id: order_item, quantity: order_item.quantity + 1 ), method: :patch, class: 'btn btn-outline-success', remote: true %></p>
   <% if order_item.quantity.positive? %>
-    <p><%= link_to 'Remove item', product_order_item_path(product_id: order_item.product, id: order_item, quantity: order_item.quantity - 1 ), method: :patch, class: 'btn btn-outline-success' %></p>
+    <p><%= link_to 'Remove item', product_order_item_path(product_id: order_item.product, id: order_item, quantity: order_item.quantity - 1 ), method: :patch, class: 'btn btn-outline-success', remote: true %></p>
   <% end %>
   <hr>
 </div>
