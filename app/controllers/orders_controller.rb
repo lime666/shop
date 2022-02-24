@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
 
   private
   def set_order
-    @order = current_order.order_items.find_by(product: params[:product_id])
+    @order = current_order
   end
 
 end
