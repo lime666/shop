@@ -3,7 +3,6 @@ class Product < ApplicationRecord
   belongs_to :category
   has_many :order_items, dependent: :destroy
   has_one_attached :image
-  #file_attach :image
 
   paginates_per 50
 

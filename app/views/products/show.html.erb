@@ -6,6 +6,12 @@
 
 <p>
   <div class="text-center">
+    <h3><%= @product.image.representation(resize_to_limit: [100, 100]) %></h3>
+  </div>
+</p>
+
+<p>
+  <div class="text-center">
     <p><%= @product.description %></p>
   </div>
 </p>
