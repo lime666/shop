@@ -76,3 +76,7 @@ gem 'devise'
 # admin panel
 gem 'rails_admin'
 gem "sassc-rails"
+# for amazon keys
+gem 'figaro'
+# for s3
+gem 'aws-sdk-s3', require: false

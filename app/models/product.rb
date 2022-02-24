@@ -2,6 +2,8 @@ class Product < ApplicationRecord
   validates :title, :description, :price, presence: true
   belongs_to :category
   has_many :order_items, dependent: :destroy
+  has_one_attached :image
+  #file_attach :image
 
   paginates_per 50
 
