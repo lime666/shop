@@ -8,16 +8,12 @@ class OrdersController < ApplicationController
 
   def update
     @order.ordered!
-    @order.update(order_params)
     redirect_to root_path, notice: "Ordered successfully"
   end
 
   private
   def set_order
-    @order = current_order
+    @order = current_order.order_items.find_by(product: params[:product_id])
   end
 
-  def order_params
-    params.require(:order).permit(:status, :user_id)
-  end
 end
