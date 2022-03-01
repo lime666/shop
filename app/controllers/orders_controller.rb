@@ -8,8 +8,10 @@ class OrdersController < ApplicationController
 
   def update
     @order.ordered!
+    OrderMailer.with(user: current_user).complete_order.deliver_now
     redirect_to root_path, notice: "Ordered successfully"
   end
+
 
   private
   def set_order
