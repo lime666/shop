@@ -24,4 +24,12 @@
   <% if current_user %>
     <%= link_to 'Add to cart', product_order_items_path(@product), method: :post, class: 'btn btn-success' %>
   <% end %>
+
+  <hr>
+  <% if current_user %>
+    <strong>New comment</strong>
+    <%= render 'comments/form', locals: { product: @product } %>
+  <% end %>
+  <strong>Comments:</strong>
+  <%#= render @product.comments %>
 </p>
