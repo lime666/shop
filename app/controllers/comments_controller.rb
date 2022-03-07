@@ -5,11 +5,12 @@ class CommentsController < ApplicationController
   end
 
   def create
-  	@comment = @product.comments.create(comment_params)
+  	@comment = Comment.create(comment_params)
+    #binding.pry
   end
 
   def edit
-    @comment = @product.comments.find(params[:id])
+    @comment = Comment.find(params[:id])
   end
 
   def update
@@ -24,14 +25,14 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-  	@comment = @product.comments.find(params[:id])
+  	@comment = Comment.find(params[:id])
     @comment.destroy
   end
 
   private
 
   def comment_params
-  	params.require(:comment).permit(:body, :user_id, :product_id)
+  	params.permit(:body, :user_id, :product_id)
   end
 
   def find_product

@@ -27,9 +27,11 @@
 
   <hr>
   <% if current_user %>
-    <strong>New comment</strong>
-    <%= render 'comments/form', locals: { product: @product } %>
+    <div id="create">
+      <strong>New comment</strong>
+      <%= render 'comments/form', locals: { product: @product }, remote: true %>
+    </div>
   <% end %>
   <strong>Comments:</strong>
-  <%#= render @product.comments %>
+  <%= render @product.comments if @product.comments.exists? %>
 </p>
