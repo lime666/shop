@@ -14,7 +14,7 @@ class Product < ApplicationRecord
     where('LOWER(title) ILIKE :search OR LOWER(description) ILIKE :search', search: "%#{search.downcase}%")
   end
 
-  def to_param
-    "#{id}-#{title.gsub(/[^a-z0-9]+/i, '-')}"
-  end
+  #def to_param
+   # "#{id}-#{title.gsub(/[^a-z0-9]+/i, '-')}"
+  #end
 end

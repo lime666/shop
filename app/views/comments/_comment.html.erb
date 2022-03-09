@@ -1,12 +1,12 @@
+<div id="action-<%= comment.id %>">
 <p><%= comment.rating %></p>
 <p><%= comment.body %></p>
 <p>Comment by: <%= comment.user.email %></p>
+<p>Created at: <%= comment.created_at.strftime("%I:%M %p") %></p>
 
 <% if current_user %>
-  <div id="update-<%= comment.id %>">
-  	<p><%= link_to "Edit comment", comment_path, method: :patch, remote: true %></p>
-  </div>
-  <div id="delete-<%= comment.id %>">
-      <p><%= link_to "Delete Comment", comment_path, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></p>
-  </div>
+    <p><%= link_to "Edit comment", comment_path(comment), method: :patch, remote: true %></p>
+    <p><%= link_to "Delete Comment", comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></p>
 <% end %>
+<hr>
+</div>

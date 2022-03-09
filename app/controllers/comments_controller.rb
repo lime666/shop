@@ -1,7 +1,10 @@
 class CommentsController < ApplicationController
-  before_action :find_product
+  before_action :set_product, only: %i[edit]
+  before_action :set_comment, only: %i[show edit update destroy]
+  before_action :authenticate_user!
 
   def new
+    @comment = Comment.new
   end
 
   def create
@@ -9,12 +12,15 @@ class CommentsController < ApplicationController
     #binding.pry
   end
 
+  def show
+    #@comments = @product.comments
+  end
+
   def edit
-    @comment = Comment.find(params[:id])
   end
 
   def update
-  	@comment = Comment.find(params[:id])
+    @product = @comment.product
     @comment.update(comment_params)
 
     if @comment.update(comment_params)
@@ -25,7 +31,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-  	@comment = Comment.find(params[:id])
+    @product = @comment.product
     @comment.destroy
   end
 
@@ -33,9 +39,13 @@ class CommentsController < ApplicationController
 
   def comment_params
   	params.permit(:body, :user_id, :product_id)
+  end 
+
+  def set_product
+    @product = Product.find(params[:product_id])
   end
 
-  def find_product
-  	@product = Product.find(params[:product_id])
+  def set_comment
+    @comment = Comment.find(params[:id])
   end
 end
