@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_product, only: %i[show edit]
+  before_action :set_product, only: %i[show]
   before_action :set_comment, only: %i[show edit update destroy]
   before_action :authenticate_user!
 
@@ -13,21 +13,15 @@ class CommentsController < ApplicationController
   end
 
   def show
-    @comments = @product.comments
+    @comments = @product.comments.find(params[:id])
   end
 
   def edit
   end
 
   def update
-    @product = @comment.product
+    #@product = @comment.product
     @comment.update(comment_params)
-
-    if @comment.update(comment_params)
-      redirect_to product_path(@product), notice: 'Comment was successfully updated.'
-    else
-      render 'edit'
-    end
   end
 
   def destroy
@@ -38,7 +32,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-  	params.permit(:body, :user_id, :product_id)
+  	params.permit(:body, :user_id, :product_id, :rating)
   end 
 
   def set_product

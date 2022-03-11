@@ -5,7 +5,7 @@
 <p>Created at: <%= comment.created_at.strftime("%I:%M %p") %></p>
 
 <% if current_user %>
-    <p><%= link_to "Edit comment", edit_comment_path(comment), method: :patch, remote: true %></p>
+    <p><%= link_to "Edit comment", edit_comment_path(comment, product_id: @product), method: :get, remote: true %></p>
     <p><%= link_to "Delete Comment", comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></p>
 <% end %>
 <hr>
