@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_product, only: %i[edit]
+  before_action :set_product, only: %i[show edit]
   before_action :set_comment, only: %i[show edit update destroy]
   before_action :authenticate_user!
 
@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
   end
 
   def show
-    #@comments = @product.comments
+    @comments = @product.comments
   end
 
   def edit

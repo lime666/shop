@@ -81,3 +81,7 @@ gem "sassc-rails"
 gem 'figaro'
 # for s3
 gem 'aws-sdk-s3', require: false
+# login with Github
+gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+gem "omniauth-rails_csrf_protection"
+

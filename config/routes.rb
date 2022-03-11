@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'orders/show'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
  
   
   resources :categories, only: [:index, :show]

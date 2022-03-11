@@ -16,19 +16,13 @@ class ProductsController < ApplicationController
     if params[:search]
       @search = params[:search]
       @products = Product.search_by(@search)
-=begin
-    respond_to do |format|
-      format.turbo_stream do
-        render turbo_stream: turbo_stream.update("search", @products.count)
-      end
-    end
-=end
     end
     @products = @products.page params[:page]
   end
 
   def show
   	@product = Product.find(params[:id])
+    @comments = @product.comments
   end
 
 
