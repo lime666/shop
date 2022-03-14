@@ -25,9 +25,6 @@
 <p>Rating: </p>
   <div class="average-comment-rating" data-score="<%= @average_rating %>">
     <%= @product.product_star %>
-    <p><%#= '★' * @average_rating + '☆' * (5 - @average_rating) %></p>
-    <p><%= '★' * @average_rating.to_i + '☆' * (5 - @average_rating.to_i) %></p>
-
   </div>
 <br>
   <% if current_user %>

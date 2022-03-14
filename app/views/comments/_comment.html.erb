@@ -1,8 +1,6 @@
 <div id="action-<%= comment.id %>">
 <div class="comment-rating" data-score="<%= comment.rating %>">
-  <p><%#= comment.rating %></p>
   <p><%= comment.comment_star %></p>
-  <p><%= '★' * comment.rating.to_i + '☆' * (5 - comment.rating.to_i) %></p>
 </div>
 <p><%= comment.body %></p>
 <p>Comment by: <%= comment.user.email %></p>

@@ -5,7 +5,7 @@ class Comment < ApplicationRecord
   validates :body, presence: true
 
   def comment_star
-    #'★' * comment.rating.to_i + '☆' * (5 - comment.rating.to_i)
+    '★' * rating.to_i + '☆' * (5 - rating.to_i)
   end
 
 end

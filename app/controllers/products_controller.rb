@@ -23,11 +23,13 @@ class ProductsController < ApplicationController
   def show
   	@product = Product.find(params[:id])
     @comments = @product.comments
+=begin
     if @product.comments.blank?
       @avarage_rating = 0
     else
       @average_rating = @product.comments.average(:rating)
     end
+=end
   end
 
 
