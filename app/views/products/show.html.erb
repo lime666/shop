@@ -20,9 +20,18 @@
   <div class="text-center">
     <p>Price: <%= number_to_currency(@product.price, unit: "UAH", separator: ",", delimiter: " ", format: "%n %u") %></p>
   </div>
+</p>
 
+<p>Rating: </p>
+  <div class="average-comment-rating" data-score="<%= @average_rating %>">
+    <%= @product.product_star %>
+    <p><%#= '★' * @average_rating + '☆' * (5 - @average_rating) %></p>
+    <p><%= '★' * @average_rating.to_i + '☆' * (5 - @average_rating.to_i) %></p>
+
+  </div>
+<br>
   <% if current_user %>
-    <%= link_to 'Add to cart', product_order_items_path(@product), method: :post, class: 'btn btn-success' %>
+    <p><%= link_to 'Add to cart', product_order_items_path(@product), method: :post, class: 'btn btn-success' %></p>
   <% end %>
 
   <hr>
@@ -30,8 +39,29 @@
     <strong>New comment</strong>
     <%= render 'comments/form', locals: { product: @product }, remote: true %>
   </div>
-  <strong>Comments:</strong>
+  <br>
+  <h3>Comments:</h3>
   <div id="create">
       <%= render @product.comments, locals: { comment: @comment }, remote: true %>
   </div>
-</p>
+
+
+<script>
+  $('.comment-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: './assets/'
+  });
+</script>
+
+<script>
+  $('.average-comment-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: './assets/'
+  });
+</script>

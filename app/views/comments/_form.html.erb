@@ -6,12 +6,20 @@
   <div class="field">
     <%= form.text_area :body, class: "form-control comment-text-area" %>
   </div>
-
-  <div class="form_field">
-    <%= form.hidden_field :rating, class: "form-control rating-field" %>
+  <br>
+  <div id="rating-form">
+    <label>Rate product, please(from 0 to 5): </label>
+    <%= form.number_field :rating, class: "" %>
   </div>
 
   <div class="actions">
     <%= form.submit "Comment", class: 'submit_form btn btn-outline-info' %>
   </div>
 <% end %>
+
+<script>
+  $('#rating-form').raty({
+    path: './javascript',
+    scoreName: 'comment[rating]'
+  });
+</script>

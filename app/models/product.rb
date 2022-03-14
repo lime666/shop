@@ -17,4 +17,16 @@ class Product < ApplicationRecord
   #def to_param
    # "#{id}-#{title.gsub(/[^a-z0-9]+/i, '-')}"
   #end
+
+  def product_star
+    #'★' * @average_rating.to_i + '☆' * (5 - @average_rating.to_i)
+=begin
+    if @average_rating.is_a? Integer
+      '★' * @average_rating + '☆' * (5 - @average_rating)
+    else
+      '★' * @average_rating.to_i + '½'
+    end
+=end
+  end
+
 end
