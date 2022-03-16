@@ -41,24 +41,3 @@
   <div id="create">
       <%= render @product.comments, locals: { comment: @comment }, remote: true %>
   </div>
-
-
-<script>
-  $('.comment-rating').raty({
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: './assets/'
-  });
-</script>
-
-<script>
-  $('.average-comment-rating').raty({
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: './assets/'
-  });
-</script>
