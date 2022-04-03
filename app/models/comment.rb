@@ -13,10 +13,15 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :product
 
-  validates :body, presence: true
+  #scope :user_order_item_ids, -> { User.select('product_id').from('order_items') }
 
+  validates :body, presence: true
   validates :user_id, uniqueness: { scope: :product, message: "You've already rated this product." }
-  validates :order_item_id, presence: { scope: :product, message: 'You can leave a comment only for ordered products.' }
+  #validates :product_id, inclusion: { in: User.select('product_id').from('order_items') }
+
+
+
+
 
   #validates_with RatingValidator
 

@@ -32,10 +32,21 @@
   <% end %>
 
   <hr>
-  <div id="create">
-    <strong>New comment</strong>
-    <%= render 'comments/form', locals: { product: @product }, remote: true %>
-  </div>
+  <%# if current_user.order_items.map(&:product_id).to_a.include?(:id) %>
+  <%# if current_user.order_items.where('order_items.product_id') == @product.id %>
+  <%# if @product.id.in?(current_user.order_items.map(&:product_id)) %>
+  <% current_user.order_items.map(&:product_id).to_a.each do |x| %>
+    <% if @product.id == x %>
+  
+    <div id="create">
+      <strong>New comment</strong>
+      <%= render 'comments/form', locals: { product: @product }, remote: true %>
+    </div>
+
+    <% end %>
+
+  <% end %>
+
   <br>
   <h3>Comments:</h3>
   <div id="create">
