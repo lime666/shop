@@ -27,11 +27,6 @@ class Product < ApplicationRecord
         '★' * @average_rating.to_i + '½'
       end
     end
-    # if (@average_rating % 1).zero?
-    #   '★' * @average_rating.to_i + '☆' * (5 - @average_rating.to_i)
-    # else
-    #   '★' * @average_rating.to_i + '½'
-    # end
   end
 
 end
