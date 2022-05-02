@@ -15,23 +15,23 @@ class Product < ApplicationRecord
     where('LOWER(title) ILIKE :search OR LOWER(description) ILIKE :search', search: "%#{search.downcase}%")
   end
 
-  #def to_param
-   # "#{id}-#{title.gsub(/[^a-z0-9]+/i, '-')}"
-  #end
-
-
   def product_star
     if comments.blank?
       @avarage_rating = 0
+      '☆' * 5
     else
       @average_rating = comments.average(:rating)
+      if (@average_rating % 1).zero?
+        '★' * @average_rating.to_i + '☆' * (5 - @average_rating.to_i)
+      else
+        '★' * @average_rating.to_i + '½'
+      end
     end
-      #'★' * @average_rating.to_i + '☆' * (5 - @average_rating.to_i)
-    if @average_rating.is_a? Integer
-      '★' * @average_rating.to_i + '☆' * (5 - @average_rating.to_i)
-    else
-      '★' * @average_rating.to_i + '½'
-    end
+    # if (@average_rating % 1).zero?
+    #   '★' * @average_rating.to_i + '☆' * (5 - @average_rating.to_i)
+    # else
+    #   '★' * @average_rating.to_i + '½'
+    # end
   end
 
 end
