@@ -13,33 +13,6 @@
           <%= link_to 'Contact', contacts_path, class: 'nav-link' %>
         </li>
 
-        <% if current_user %>
-          <li class="nav-item">
-            <%= button_to "Log Out", destroy_user_session_path, class: 'nav-link', method: :delete %>
-          </li>
-        <%#= link_to "Profile", profile_path, class: 'btn btn-light ml-3', method: :get %>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Sign Up", new_user_registration_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Sign In", new_user_session_path, class: 'nav-link' %>
-          </li>
-        <% end %>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
         <div id="search">
           <%= form_with url: products_path, method: :get, class: "d-flex", id: "search-form" do %>
             <%= text_field_tag :search, params[:search], placeholder: "Search", id: "search-field" %>
@@ -49,6 +22,18 @@
         <% if current_user %>
           <li class="nav-item">
             <%= link_to 'Cart', order_path(current_order), class: 'nav-link' %>
+          </li>
+        <% end %>
+        <% if current_user %>
+          <li class="nav-item">
+            <%= button_to "Log Out", destroy_user_session_path, class: 'nav-link', method: :delete %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Sign Up", new_user_registration_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign In", new_user_session_path, class: 'nav-link' %>
           </li>
         <% end %>
       </ul>

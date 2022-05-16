@@ -32,16 +32,12 @@
   <% end %>
 
   <hr>
-  <% if current_user %>
-    <% current_user.order_items.map(&:product_id).to_a.each do |x| %>
-      <% if @product.id == x %>
-    
+  <% current_user.order_items.map(&:product_id).to_a.each do |x| %>
+    <% if @product.id == x %>
       <div id="create">
         <strong>New comment</strong>
         <%= render 'comments/form', locals: { product: @product }, remote: true %>
       </div>
-
-      <% end %>
     <% end %>
 
   <% end %>

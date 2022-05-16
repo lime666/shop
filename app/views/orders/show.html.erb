@@ -1,6 +1,10 @@
 <h3>Products in cart:</h3>
 <%= render partial: 'order_item', collection: @order_items %>
 <p><div id="total-<%= current_order.id %>">Total price: <%= current_order.total %></div></p>
-<%= link_to "Order", order_path, method: :patch, class: 'btn btn-outline-success' %>
+<% if current_user %>
+	<%= link_to "Order", order_path, method: :patch, class: 'btn btn-outline-success' %>
+<% else %>
+	<p>You have to sign in or sign up to make an order.</p>
+<% end %>
 <hr>
 <%= link_to "Continue Shopping", root_path, class: 'btn btn-outline-success' %>
