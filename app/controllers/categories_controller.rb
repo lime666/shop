@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class CategoriesController < ApplicationController
   def index
-  	@categories = Category.where(parent_id: nil).order(:title)
+    @categories = Category.where(parent_id: nil).order(:title)
   end
 
   def show

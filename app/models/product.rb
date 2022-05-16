@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Product < ApplicationRecord
   validates :title, :description, :price, presence: true
   belongs_to :category
@@ -7,9 +9,8 @@ class Product < ApplicationRecord
 
   paginates_per 50
 
-  scope :price_range, -> (min, max) { where('price >= ? AND price <= ?', min, max) }
-  scope :order_by_type, -> (type) { order(type) }
-
+  scope :price_range, ->(min, max) { where('price >= ? AND price <= ?', min, max) }
+  scope :order_by_type, ->(type) { order(type) }
 
   def self.search_by(search)
     where('LOWER(title) ILIKE :search OR LOWER(description) ILIKE :search', search: "%#{search.downcase}%")
@@ -28,5 +29,4 @@ class Product < ApplicationRecord
       end
     end
   end
-
 end

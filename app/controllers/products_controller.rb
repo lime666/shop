@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class ProductsController < ApplicationController
-  #before_action :set_category, only: :index
-  
+  # before_action :set_category, only: :index
+
   def index
-  	@products = Product.all
+    @products = Product.all
     @categories = Category.all
     @sort_by = params[:sort_by]
     @order_item = current_order.order_items.new
-   
+
     @products = Product.order_by_type(@sort_by)
 
     if params[:price_from].present? && params[:price_to].present?
@@ -21,17 +23,9 @@ class ProductsController < ApplicationController
   end
 
   def show
-  	@product = Product.find(params[:id])
+    @product = Product.find(params[:id])
     @comments = @product.comments
-=begin
-    if @product.comments.blank?
-      @avarage_rating = 0
-    else
-      @average_rating = @product.comments.average(:rating)
-    end
-=end
   end
-
 
   private
 
@@ -40,6 +34,6 @@ class ProductsController < ApplicationController
   end
 
   def set_category
-  	@category = Category.find(params[:category_id])
+    @category = Category.find(params[:category_id])
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PagesController < ApplicationController
   def home
     @products = Product.order('created_at DESC').page params[:page]
@@ -7,9 +9,7 @@ class PagesController < ApplicationController
     render 'contacts'
   end
 
-
   def all_products
     @products = Product.all
   end
-
 end

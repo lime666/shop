@@ -1,12 +1,9 @@
+# frozen_string_literal: true
+
 class RatingValidator < ActiveModel::Validator
   def validate(record)
-    if record.rating.present?
-      record.errors.add :base, "You've already rated this product."
-    end
-
+    record.errors.add :base, "You've already rated this product." if record.rating.present?
   end
-
-
 end
 
 class Comment < ApplicationRecord
@@ -19,5 +16,4 @@ class Comment < ApplicationRecord
   def comment_star
     '★' * rating.to_i + '☆' * (5 - rating.to_i)
   end
-
 end

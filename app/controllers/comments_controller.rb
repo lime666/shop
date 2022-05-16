@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :set_product, only: %i[show]
   before_action :set_comment, only: %i[show edit update destroy]
@@ -8,19 +10,18 @@ class CommentsController < ApplicationController
   end
 
   def create
-	  @comment = Comment.create(comment_params)
-    #binding.pry
+    @comment = Comment.create(comment_params)
+    # binding.pry
   end
 
   def show
     @comments = @product.comments.find(params[:id])
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
-    #@product = @comment.product
+    # @product = @comment.product
     @comment.update(comment_params)
   end
 
@@ -29,12 +30,11 @@ class CommentsController < ApplicationController
     @comment.destroy
   end
 
-
   private
 
   def comment_params
-  	params.permit(:body, :user_id, :product_id, :rating)
-  end 
+    params.permit(:body, :user_id, :product_id, :rating)
+  end
 
   def set_product
     @product = Product.find(params[:product_id])

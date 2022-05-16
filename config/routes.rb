@@ -1,22 +1,22 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   get 'orders/show'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
- 
-  
-  resources :categories, only: [:index, :show]
-  resources :products, only: [:index, :show]
-  
-  
+
+  resources :categories, only: %i[index show]
+  resources :products, only: %i[index show]
+
   resources :products do
-    resources :order_items, only: [:create, :update, :destroy]
+    resources :order_items, only: %i[create update destroy]
   end
 
   resources :comments
 
-  resources :orders, only: [:show, :update]
+  resources :orders, only: %i[show update]
 
-  resources :pages, only: [:home, :contacts, :all_products]
+  resources :pages, only: %i[home contacts all_products]
   get 'contacts', to: 'pages#contacts'
   get 'all_products', to: 'pages#all_products'
 
